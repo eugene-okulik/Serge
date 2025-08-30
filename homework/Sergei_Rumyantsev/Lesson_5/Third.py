@@ -1,4 +1,7 @@
 students = ['Ivanov', 'Petrov', 'Sidorov']
 subjects = ['math', 'biology', 'geography']
 
-print(f'Students {students[0]}, {students[1]}, {students[2]} study these subjects: {subjects[0]}, {subjects[1]}, {subjects[2]}')
+a, b,c = students
+d, e, f = subjects
+
+print(f'Students {a}, {b}, {c} study these subjects: {d}, {e}, {f}')
