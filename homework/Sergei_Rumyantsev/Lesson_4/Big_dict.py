@@ -9,7 +9,7 @@ print(my_dict["tuple"][-1])
 my_dict["list"].append(6)
 my_dict["list"].pop(1)
 
-my_dict["dict"]["i'm a tuple"] = ('Abnormal', 'tuple', 12345, True, None)
+my_dict["dict"][("i'm a tuple",)] = ('Abnormal', 'tuple', 12345, True, None)
 my_dict["dict"].pop("two")
 
 my_dict["set"].add(6)
