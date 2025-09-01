@@ -7,3 +7,4 @@ while True:
     else:
         print('Поздравляю! Вы угадали!')
         break
+    
