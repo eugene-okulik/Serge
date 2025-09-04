@@ -1,7 +1,7 @@
 class Book:
     page_material = "Бумага"
     has_text = True
-    
+
     def __init__(self, book_name, author, num_pages, isbn, is_reserved=False):
         self.book_name = book_name
         self.author = author
