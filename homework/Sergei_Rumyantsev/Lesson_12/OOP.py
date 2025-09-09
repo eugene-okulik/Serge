@@ -47,7 +47,7 @@ class Bouquet:
 
     def find(self, condition):
         return [f for f in self.flowers if condition(f)]
-    
+
     def find_by_average_lifespan(self, tolerance=0):
         avg = self.average_lifespan()
         return self.find(lambda f: abs(f.lifespan - avg) <= tolerance)
