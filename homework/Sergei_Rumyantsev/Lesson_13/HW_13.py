@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
 
-with open('homework/eugene_okulik/hw_13/data.txt', 'r', encoding = 'utf-8') as file:
+with open('homework/eugene_okulik/hw_13/data.txt', 'r', encoding='utf-8') as file:
     data_list = []
     for files in file:
         data_list.append(files)
