@@ -20,7 +20,7 @@ for data in data_list:
     elif a[0][0] == '2':
         second = a[1] + ' ' + a[2]
         second_datetime = datetime.strptime(second, "%Y-%m-%d %H:%M:%S.%f")
-        print(f'Какой будет день недели: {second_datetime.strftime('%A')}')
+        print(f'Какой будет день недели: {second_datetime.strftime("%A")}')
 
     elif a[0][0] == '3':
         third = a[1] + ' ' + a[2]
