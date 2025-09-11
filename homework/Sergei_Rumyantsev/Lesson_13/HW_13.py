@@ -1,7 +1,12 @@
+import os
 from datetime import datetime, timedelta
 
 
-with open('homework/eugene_okulik/hw_13/data.txt', 'r', encoding='utf-8') as file:
+base_path = 'C:\\Users\\darti\\OneDrive\\Рабочий стол\\QA course\\HW_2 Git\\homework\\eugene_okulik\\hw_13'
+file_path = os.path.join(base_path, "data.txt")
+
+
+with open(file_path, 'r', encoding='utf-8') as file:
     data_list = []
     for files in file:
         data_list.append(files)
