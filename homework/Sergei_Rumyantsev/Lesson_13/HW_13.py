@@ -2,8 +2,9 @@ import os
 from datetime import datetime, timedelta
 
 
-base_path = 'C:\\Users\\darti\\OneDrive\\Рабочий стол\\QA course\\HW_2 Git\\homework\\eugene_okulik\\hw_13'
-file_path = os.path.join(base_path, "data.txt")
+base_path = os.path.dirname(os.path.abspath(__file__))
+homework_path = os.path.dirname(os.path.dirname(base_path))
+file_path = os.path.join(homework_path, "eugene_okulik", "hw_13", "data.txt")
 
 
 with open(file_path, 'r', encoding='utf-8') as file:
