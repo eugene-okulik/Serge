@@ -1,4 +1,4 @@
-1. INSERT INTO students (name, second_name, group_id) VALUES ('Serge', 'Rumyantsev', '1')
+1. INSERT INTO students (name, second_name) VALUES ('Serge', 'Rumyantsev')
 2. INSERT INTO books (title, taken_by_student_id) VALUES ('Война и мир', '21216')
 INSERT INTO books (title, taken_by_student_id) VALUES ('Граф Монте-Кристо', '21216')
 INSERT INTO books (title, taken_by_student_id) VALUES ('Ревизор', '21216')
