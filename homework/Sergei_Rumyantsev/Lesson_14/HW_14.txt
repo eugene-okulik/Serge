@@ -1,0 +1,38 @@
+1. INSERT INTO students (name, second_name) VALUES ('Serge', 'Rumyantsev')
+2. INSERT INTO books (title, taken_by_student_id) VALUES ('Война и мир', '21216')
+INSERT INTO books (title, taken_by_student_id) VALUES ('Граф Монте-Кристо', '21216')
+INSERT INTO books (title, taken_by_student_id) VALUES ('Ревизор', '21216')
+INSERT INTO books (title, taken_by_student_id) VALUES ('Герои нашего времени', '21216')
+INSERT INTO books (title, taken_by_student_id) VALUES ('Преступление и наказание', '21216')
+3. INSERT INTO `groups` (title, start_date, end_date) VALUES ('For_test_group', 'nov 2025', 'nov 2026')
+UPDATE students SET group_id = '21220' WHERE id = '21216'
+4. INSERT INTO subjects (title) VALUES ('For_test_math')
+INSERT INTO subjects (title) VALUES ('For_test_PE')
+INSERT INTO subjects (title) VALUES ('For_test_Foreing_lang')
+INSERT INTO subjects (title) VALUES ('For_test_Foreing_History')
+5.INSERT INTO lessons (title, subject_id) VALUES ('Math', '12093')
+5.INSERT INTO lessons (title, subject_id) VALUES ('Math1', '12093')
+INSERT INTO lessons (title, subject_id) VALUES ('PE', '12094')
+INSERT INTO lessons (title, subject_id) VALUES ('PE1', '12094')
+INSERT INTO lessons (title, subject_id) VALUES ('FL', '12095')
+INSERT INTO lessons (title, subject_id) VALUES ('FL1', '12095')
+INSERT INTO lessons (title, subject_id) VALUES ('Hystory', '12096')
+INSERT INTO lessons (title, subject_id) VALUES ('Hystory1', '12096')
+6.INSERT INTO marks (value, lesson_id, student_id) VALUES (5, 12406, 21216)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (4, 12408, 21216)\
+INSERT INTO marks (value, lesson_id, student_id) VALUES (4, 12407, 21216)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (4, 12409, 21216)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (3, 12410, 21216)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (2, 12411, 21216)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (4, 12412, 21216)
+INSERT INTO marks (value, lesson_id, student_id) VALUES (4, 12413, 21216)
+--------------------------------------
+1. SELECT value FROM marks m WHERE m.student_id = '21216'
+2. SELECT title FROM books b WHERE b.taken_by_student_id = '21216'
+3. SELECT s.name, g.title, b.title, m.value, l.title, sb.title FROM books AS b
+INNER JOIN students AS s ON b.taken_by_student_id = s.id
+INNER JOIN `groups` AS g ON s.group_id = g.id
+INNER JOIN marks AS m ON m.student_id = s.id
+INNER JOIN lessons AS l ON m.lesson_id = l.id
+INNER JOIN subjects AS sb ON sb.id = l.subject_id
+WHERE s.id = 21216
