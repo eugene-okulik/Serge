@@ -60,7 +60,7 @@ subjects_values = [
 ]
 subjects_id = []
 for value in subjects_values:
-    cursor.execute(subjects_query, (value,)) # <- тут я матерился :) 
+    cursor.execute(subjects_query, (value,)) #  <- тут я матерился :)
     subjects_id.append(cursor.lastrowid)
 
 for id in subjects_id:
@@ -75,7 +75,7 @@ lessons_id = []
 
 for subject, subj_id in zip(subjects_values, subjects_id):
     subj_list = subject.split('_')
-    subj_name = ' '.join(subj_list[2:])  
+    subj_name = ' '.join(subj_list[2:])
 
     for lesson_num in range(2):
         lesson_res = f"{subj_name}_{lesson_num}"
@@ -88,14 +88,14 @@ for value in lessons_values:
 for id in lessons_id:
     cursor.execute(f'SELECT * FROM lessons WHERE id = {id}')
     print(cursor.fetchall())
- 
+
 
 # Задание 6: Поставьте своему студенту оценки (marks) для всех созданных вами занятий
 marks_query = 'INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)'
 marks_id = []
 
 for id in lessons_id:
-    mark = random.randint(2,5)
+    mark = random.randint(2, 5)
     value = (mark, id, student_id)
     cursor.execute(marks_query, value)
     marks_id.append(cursor.lastrowid)
@@ -112,9 +112,10 @@ print(cursor.fetchall())
 cursor.execute(f'SELECT title FROM books b WHERE b.taken_by_student_id = {student_id}')
 print(cursor.fetchall())
 
-# Задание 7_3: Для вашего студента выведите всё, что о нем есть в базе: группа, книги, оценки с названиями занятий и предметов (всё одним запросом с использованием Join)
+# Задание 7_3: Для вашего студента выведите всё, что о нем есть в базе: 
+# группа, книги, оценки с названиями занятий и предметов (всё одним запросом с использованием Join)
 cursor.execute(f'''
-    SELECT 
+    SELECT
         s.name AS student_name,
         g.title AS group_title,
         b.title AS book_title,
