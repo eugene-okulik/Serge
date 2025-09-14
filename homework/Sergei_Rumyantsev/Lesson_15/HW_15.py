@@ -60,7 +60,7 @@ subjects_values = [
 ]
 subjects_id = []
 for value in subjects_values:
-    cursor.execute(subjects_query, (value,)) #  <- тут я матерился :)
+    cursor.execute(subjects_query, (value,))
     subjects_id.append(cursor.lastrowid)
 
 for id in subjects_id:
@@ -112,7 +112,7 @@ print(cursor.fetchall())
 cursor.execute(f'SELECT title FROM books b WHERE b.taken_by_student_id = {student_id}')
 print(cursor.fetchall())
 
-# Задание 7_3: Для вашего студента выведите всё, что о нем есть в базе: 
+# Задание 7_3: Для вашего студента выведите всё, что о нем есть в базе:
 # группа, книги, оценки с названиями занятий и предметов (всё одним запросом с использованием Join)
 cursor.execute(f'''
     SELECT
