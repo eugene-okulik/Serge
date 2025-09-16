@@ -15,7 +15,7 @@ db = mysql.connect(
 )
 
 cursor = db.cursor(dictionary=True)
-cursor.execute(f'''
+cursor.execute('''
     SELECT
         s.name AS student_name,
         s.second_name AS second_name,
