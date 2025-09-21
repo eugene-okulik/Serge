@@ -26,7 +26,7 @@ def main():
     parser.add_argument(
         '--text', type=str, required=True, help='Searched_text'
     )
-    
+
     args = parser.parse_args()
 
     log_dir = args.filepath
