@@ -10,7 +10,7 @@ def search_in_file(file_path: str, search_text: str):
                 words = line.strip().split()
                 indices = [
                     i for i, word in enumerate(words) if search_text in word
-                    ]
+                ]
 
                 for idx in indices:
                     start = max(idx - 5, 0)
@@ -23,7 +23,10 @@ def search_in_file(file_path: str, search_text: str):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('filepath', type=str, help='File_path')
-    parser.add_argument('--text', type=str, required=True, help='Searched_text')
+    parser.add_argument(
+        '--text', type=str, required=True, help='Searched_text'
+    )
+    
     args = parser.parse_args()
 
     log_dir = args.filepath
@@ -43,8 +46,8 @@ def main():
         if results:
             for line_number, snippet in results:
                 print(f"""
-                      File Name: '{filename}', 
-                      line number: '{line_number}' 
+                      File Name: '{filename}',
+                      line number: '{line_number}'
                       and snippet: '{snippet}'
                       """)
 
