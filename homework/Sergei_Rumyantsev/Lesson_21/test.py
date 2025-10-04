@@ -33,7 +33,7 @@ def test_create_post(name, color, size):
         )
         allure.attach(
             str(response.text), "Ответ сервера", allure.attachment_type.TEXT
-            )
+        )
         assert response.status_code == 200
 
 
@@ -58,7 +58,7 @@ def test_change_data_put(new_post_id):
         )
         allure.attach(
             str(response.text), "Ответ сервера", allure.attachment_type.TEXT
-            )
+        )
         assert response.status_code == 200
 
 
@@ -81,7 +81,7 @@ def test_change_data_patch(new_post_id):
         )
         allure.attach(
             str(response.text), "Ответ сервера", allure.attachment_type.TEXT
-            )
+        )
         assert response.status_code == 200
 
 
