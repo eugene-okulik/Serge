@@ -36,7 +36,7 @@ def new_post_id():
     yield post_id
     requests.delete(
         f'http://objapi.course.qa-practice.com/object/{new_post_id}'
-        )
+    )
 
 
 @pytest.mark.critical
