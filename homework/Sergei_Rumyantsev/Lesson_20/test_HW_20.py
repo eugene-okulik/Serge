@@ -18,7 +18,7 @@ def each_test_fixture():
 
 
 @pytest.fixture()
-def new_post_id():
+def new_object_id():
     body = json.dumps({
         "name": "Test object",
         "data": {
@@ -35,7 +35,7 @@ def new_post_id():
     post_id = response.json()['id']
     yield post_id
     requests.delete(
-        f'http://objapi.course.qa-practice.com/object/{new_post_id}'
+        f'http://objapi.course.qa-practice.com/object/{post_id}'
     )
 
 
@@ -48,13 +48,10 @@ def new_post_id():
         ("Test object 3", "Blue", "Large"),
     ]
 )
-def test_create_post(name, color, size):
+def test_create_object_successfully(name, color, size):
     body = json.dumps({
-        "name": "Test object",
-        "data": {
-            "color": "Green",
-            "size": "Medium",
-        },
+        "name": name,
+        "data": {"color": color, "size": size},
     })
     headers = {'Content-type': 'application/json'}
     response = requests.post(
@@ -67,7 +64,7 @@ def test_create_post(name, color, size):
 
 
 @pytest.mark.medium
-def test_change_data_put(new_post_id):
+def test_update_object_with_put_successfully(new_object_id):
     body = json.dumps({
         "name": "Test object",
         "data": {
@@ -77,7 +74,7 @@ def test_change_data_put(new_post_id):
     })
     headers = {'Content-type': 'application/json'}
     response = requests.put(
-        f'http://objapi.course.qa-practice.com/object/{new_post_id}',
+        f'http://objapi.course.qa-practice.com/object/{new_object_id}',
         data=body,
         headers=headers,
     )
@@ -85,7 +82,7 @@ def test_change_data_put(new_post_id):
     print('Change data PUT')
 
 
-def test_change_data_patch(new_post_id):
+def test_partial_update_object_with_patch_successfully(new_object_id):
     body = json.dumps({
         "data": {
             "color": "Red",
@@ -94,9 +91,17 @@ def test_change_data_patch(new_post_id):
     })
     headers = {'Content-type': 'application/json'}
     response = requests.patch(
-        f'http://objapi.course.qa-practice.com/object/{new_post_id}',
+        f'http://objapi.course.qa-practice.com/object/{new_object_id}',
         data=body,
         headers=headers,
     )
     assert response.status_code == 200
     print('Change data PATCH')
+
+
+def test_delete_object_successfully(new_object_id):
+    response = requests.delete(
+        f'http://objapi.course.qa-practice.com/object/{new_object_id}'
+    )
+    assert response.status_code == 200
+    print('Delete obj')
