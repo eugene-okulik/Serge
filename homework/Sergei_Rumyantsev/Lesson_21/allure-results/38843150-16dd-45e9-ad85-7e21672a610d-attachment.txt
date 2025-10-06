@@ -1,1 +1,0 @@
-{"data":{"color":"Green","size":"Large"},"id":"126","name":"Test object"}
