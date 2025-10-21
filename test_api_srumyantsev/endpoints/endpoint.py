@@ -13,7 +13,7 @@ class Endpoint:
             str(self.response.text),
             "Ответ сервера",
             allure.attachment_type.TEXT
-            )
+        )
         assert self.status_code == 200
 
     @property

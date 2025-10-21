@@ -39,7 +39,7 @@ def test_change_data_put(update_data_put, post_id):
         }
         response = update_data_put.make_changes_in_post(
             post_id=post_id, body=body, headers=None
-            )
+        )
         update_data_put.check_status_code_is_correct(response.status_code)
 
 
@@ -55,7 +55,7 @@ def test_change_data_patch(update_data_patch, post_id):
         }
         response = update_data_patch.partial_changes_in_post(
             post_id=post_id, body=body, headers=None
-            )
+        )
         update_data_patch.check_status_code_is_correct(response.status_code)
 
 
@@ -64,6 +64,6 @@ def test_change_data_patch(update_data_patch, post_id):
 @pytest.mark.high
 def test_delete_object_successfully(delete_data, post_id):
     response = delete_data.delete_post(
-            post_id=post_id, headers=None
-        )
+        post_id=post_id, headers=None
+    )
     delete_data.check_status_code_is_correct(response.status_code)
