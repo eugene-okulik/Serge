@@ -1,28 +1,28 @@
 import pytest
-from test_api_srumyantsev.endpoints.create_post import CreatePost
-from test_api_srumyantsev.endpoints.update_post import UpdatePost
-from test_api_srumyantsev.endpoints.partial_update_post import PartUpdatePost
-from test_api_srumyantsev.endpoints.delete_post import DeletePost
+from test_api_srumyantsev.endpoints.create_object import Createobject
+from test_api_srumyantsev.endpoints.update_object import Updateobject
+from test_api_srumyantsev.endpoints.partial_update_object import PartUpdateobject
+from test_api_srumyantsev.endpoints.delete_object import Deleteobject
 
 
 @pytest.fixture
-def create_post_endpoint(base_url):
-    return CreatePost(base_url)
+def create_object_endpoint(base_url):
+    return Createobject(base_url)
 
 
 @pytest.fixture
 def update_data_put(base_url):
-    return UpdatePost(base_url)
+    return Updateobject(base_url)
 
 
 @pytest.fixture
 def update_data_patch(base_url):
-    return PartUpdatePost(base_url)
+    return PartUpdateobject(base_url)
 
 
 @pytest.fixture
 def delete_data(base_url):
-    return DeletePost(base_url)
+    return Deleteobject(base_url)
 
 
 @pytest.fixture
@@ -31,8 +31,8 @@ def base_url():
 
 
 @pytest.fixture
-def post_id(base_url):
-    endpoint = CreatePost(base_url)
+def object_id(base_url):
+    endpoint = Createobject(base_url)
     body = {
         "name": "Test object",
         "data": {
@@ -41,9 +41,11 @@ def post_id(base_url):
         }
     }
 
-    response = endpoint.create_new_post(body, headers=None)
+    response = endpoint.create_new_object(body, headers=None)
 
     response_json = response.json()
-    post_id = response_json["id"]
+    object_id = response_json["id"]
 
-    return post_id
+    yield object_id
+
+    Deleteobject(base_url).delete_object(object_id, headers=None)

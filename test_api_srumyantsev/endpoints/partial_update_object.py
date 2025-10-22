@@ -3,12 +3,12 @@ import requests
 from test_api_srumyantsev.endpoints.endpoint import Endpoint
 
 
-class UpdatePost(Endpoint):
+class PartUpdateobject(Endpoint):
 
-    def make_changes_in_post(self, post_id, body, headers=None):
+    def partial_changes_in_object(self, object_id, body, headers=None):
         headers = headers if headers else self.headers
-        self.response = requests.put(
-            f'{self.url}/{post_id}',
+        self.response = requests.patch(
+            f'{self.url}/{object_id}',
             json=body,
             headers=headers,
         )

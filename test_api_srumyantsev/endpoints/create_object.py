@@ -3,7 +3,7 @@ import allure
 from test_api_srumyantsev.endpoints.endpoint import Endpoint
 
 
-class CreatePost(Endpoint):
+class Createobject(Endpoint):
 
     def build_body(self, name, color, size):
         return {
@@ -14,8 +14,8 @@ class CreatePost(Endpoint):
             }
         }
 
-    @allure.step('Create new post')
-    def create_new_post(self, body, headers):
+    @allure.step('Create new object')
+    def create_new_object(self, body, headers):
         headers = headers if headers else self.headers
         self.response = requests.post(
             self.url,

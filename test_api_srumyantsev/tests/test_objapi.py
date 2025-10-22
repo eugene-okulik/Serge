@@ -13,22 +13,24 @@ TEST_DATA = [
 @allure.story("Проверка создания объекта с параметрами")
 @pytest.mark.critical
 @pytest.mark.parametrize('data', TEST_DATA)
-def test_create_post(data, create_post_endpoint):
+def test_create_object(data, create_object_endpoint):
     with allure.step("Формирование body запроса"):
-        body = create_post_endpoint.build_body(
+        body = create_object_endpoint.build_body(
             name=data["name"],
             color=data["color"],
             size=data["size"]
         )
 
-    response = create_post_endpoint.create_new_post(body=body, headers=None)
-    create_post_endpoint.check_status_code_is_correct(response.status_code)
+    response = create_object_endpoint.create_new_object(
+        body=body, headers=None
+    )
+    create_object_endpoint.check_status_code_is_200(response.status_code)
 
 
 @allure.feature("Изменение объекта")
 @allure.story("PUT изменение данных")
 @pytest.mark.medium
-def test_change_data_put(update_data_put, post_id):
+def test_change_data_put(update_data_put, object_id):
     with allure.step("Формирование данных PUT запроса"):
         body = {
             "name": "Test object",
@@ -37,15 +39,15 @@ def test_change_data_put(update_data_put, post_id):
                 "size": "Large",
             }
         }
-        response = update_data_put.make_changes_in_post(
-            post_id=post_id, body=body, headers=None
+        response = update_data_put.make_changes_in_object(
+            object_id=object_id, body=body, headers=None
         )
-        update_data_put.check_status_code_is_correct(response.status_code)
+        update_data_put.check_status_code_is_200(response.status_code)
 
 
 @allure.feature("Изменение объекта")
 @allure.story("PATCH частичное изменение данных")
-def test_change_data_patch(update_data_patch, post_id):
+def test_change_data_patch(update_data_patch, object_id):
     with allure.step("Формирование данных PATCH запроса"):
         body = {
             "data": {
@@ -53,17 +55,17 @@ def test_change_data_patch(update_data_patch, post_id):
                 "size": "Medium",
             }
         }
-        response = update_data_patch.partial_changes_in_post(
-            post_id=post_id, body=body, headers=None
+        response = update_data_patch.partial_changes_in_object(
+            object_id=object_id, body=body, headers=None
         )
-        update_data_patch.check_status_code_is_correct(response.status_code)
+        update_data_patch.check_status_code_is_200(response.status_code)
 
 
 @allure.feature("Удаление объекта")
 @allure.story("Проверка успешного удаления объекта")
 @pytest.mark.high
-def test_delete_object_successfully(delete_data, post_id):
-    response = delete_data.delete_post(
-        post_id=post_id, headers=None
+def test_delete_object_successfully(delete_data, object_id):
+    response = delete_data.delete_object(
+        object_id=object_id, headers=None
     )
-    delete_data.check_status_code_is_correct(response.status_code)
+    delete_data.check_status_code_is_200(response.status_code)
