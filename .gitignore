@@ -8,3 +8,4 @@ credentials.py
 .env
 Creds.py
 allure-results
+__init__.py
