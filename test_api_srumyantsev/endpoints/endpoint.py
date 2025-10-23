@@ -8,7 +8,7 @@ class Endpoint:
     headers = {'Content-type': 'application/json'}
 
     @allure.step('Проверка кода ответа')
-    def check_status_code_is_200(self, status_code):
+    def check_status_code_is_200(self):
         assert self.status_code == 200
 
     @property

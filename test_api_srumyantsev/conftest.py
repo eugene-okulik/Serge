@@ -31,8 +31,7 @@ def base_url():
 
 
 @pytest.fixture
-def object_id(base_url):
-    endpoint = Createobject(base_url)
+def object_id(create_object_endpoint, delete_data, base_url):
     body = {
         "name": "Test object",
         "data": {
@@ -41,11 +40,11 @@ def object_id(base_url):
         }
     }
 
-    response = endpoint.create_new_object(body, headers=None)
+    response = create_object_endpoint.create_new_object(body=body, headers=None)
 
     response_json = response.json()
     object_id = response_json["id"]
 
     yield object_id
 
-    Deleteobject(base_url).delete_object(object_id, headers=None)
+    delete_data.delete_object(object_id, headers=None)
