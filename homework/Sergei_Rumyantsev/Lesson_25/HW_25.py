@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # Первое задание
 def test_input_text():
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install())) # Есть баг в селениуме
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.implicitly_wait(5)
 
     driver.get('https://www.qa-practice.com/elements/input/simple')
@@ -47,23 +47,23 @@ def test_few_inputs():
     driver.find_element(
         By.CSS_SELECTOR,
         ".react-datepicker__year-select"
-        ).click()
+    ).click()
     driver.find_element(
         By.CSS_SELECTOR,
         ".react-datepicker__year-select option[value='2025']"
-        ).click()
+    ).click()
     driver.find_element(
         By.CSS_SELECTOR,
         ".react-datepicker__month-select"
-        ).click()
+    ).click()
     driver.find_element(
         By.CSS_SELECTOR,
         ".react-datepicker__month-select option[value='10']"
-        ).click()
+    ).click()
     driver.find_element(
         By.XPATH,
         "//div[contains(@class,'react-datepicker__day') and text()='31']"
-        ).click()
+    ).click()
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
     subject_input = driver.find_element(By.CSS_SELECTOR, "[class*='subjects-auto-complete__value-container'] input")
@@ -73,24 +73,24 @@ def test_few_inputs():
     driver.find_element(
         By.CSS_SELECTOR,
         "label[for='hobbies-checkbox-3']"
-        ).click()
+    ).click()
     current_address_field = driver.find_element(By.ID, 'currentAddress')
     current_address_field.send_keys('Moscow, ul.Pushkina, dom Kolotushkina')
     driver.find_element(
         By.XPATH,
         "//div[text()='Select State']"
-        ).click()
+    ).click()
     driver.find_element(
         By.XPATH,
         "//div[contains(@class,'option') and text()='Haryana']"
-        ).click()
+    ).click()
     driver.find_element(
         By.XPATH,
         "//div[text()='Select City']").click()
     driver.find_element(
         By.XPATH,
         "//div[contains(@class,'option') and text()='Karnal']"
-        ).click()
+    ).click()
     submit_button = driver.find_element(By.ID, 'submit')
     submit_button.click()
     WebDriverWait(driver, 10).until(
@@ -118,43 +118,43 @@ def test_few_inputs():
     actual_name = driver.find_element(
         By.XPATH,
         "//td[text()='Student Name']/following-sibling::td"
-        ).text
+    ).text
     actual_email = driver.find_element(
         By.XPATH,
         "//td[text()='Student Email']/following-sibling::td"
-        ).text
+    ).text
     actual_gender = driver.find_element(
         By.XPATH,
         "//td[text()='Gender']/following-sibling::td"
-        ).text
+    ).text
     actual_mobile = driver.find_element(
         By.XPATH,
         "//td[text()='Mobile']/following-sibling::td"
-        ).text
+    ).text
     actual_dob = driver.find_element(
         By.XPATH,
         "//td[text()='Date of Birth']/following-sibling::td"
-        ).text
+    ).text
     actual_subjects = driver.find_element(
         By.XPATH,
         "//td[text()='Subjects']/following-sibling::td"
-        ).text
+    ).text
     actual_hobbies = driver.find_element(
         By.XPATH,
         "//td[text()='Hobbies']/following-sibling::td"
-        ).text
+    ).text
     actual_picture = driver.find_element(
         By.XPATH,
         "//td[text()='Picture']/following-sibling::td"
-        ).text
+    ).text
     actual_address = driver.find_element(
         By.XPATH,
         "//td[text()='Address']/following-sibling::td"
-        ).text
+    ).text
     actual_state_city = driver.find_element(
         By.XPATH,
         "//td[text()='State and City']/following-sibling::td"
-        ).text
+    ).text
 
     print("\n--- РЕЗУЛЬТАТЫ СРАВНЕНИЯ ---")
     print(f"Name:        Expected: '{expected_name}' | Actual: '{actual_name}'")
