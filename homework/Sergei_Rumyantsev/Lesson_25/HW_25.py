@@ -101,7 +101,7 @@ def test_few_inputs():
         lambda d: d.find_element(
             By.XPATH,
             "//td[text()='Student Name']/following-sibling::td"
-            ).text.strip() != ""
+        ).text.strip() != ""
     )
 
     expected_name = "Test Testovikh"
