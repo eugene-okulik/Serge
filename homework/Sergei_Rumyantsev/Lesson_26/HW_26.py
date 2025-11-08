@@ -8,7 +8,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-
 def test_customer_flow():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.maximize_window()
@@ -31,11 +30,10 @@ def test_customer_flow():
         )
     )
     cont_btn = wait.until(lambda d: d.find_element(
-            By.XPATH,
-            "//div[@role='dialog' and contains(@class,'show')]"
-            "//button[.//span[normalize-space()='Continue Shopping']]"
-        )
-    )
+        By.XPATH,
+        "//div[@role='dialog' and contains(@class,'show')]"
+        "//button[.//span[normalize-space()='Continue Shopping']]"
+    ))
     ActionChains(driver).move_to_element(cont_btn).pause(1).click(cont_btn).perform()
 
     driver.close()
@@ -54,6 +52,7 @@ def test_customer_flow():
 
 
 test_customer_flow()
+
 
 def test_popup():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
