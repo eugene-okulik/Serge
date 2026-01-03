@@ -8,7 +8,7 @@ def test_alert(page: Page):
     page.locator('a[onclick*="confirm"]').click()
     result = page.locator('#result')
     result_text = page.locator('#result-text')
-    expect(result).to_contain_text('You selected')    
+    expect(result).to_contain_text('You selected')
     expect(result_text).to_contain_text('Ok')
 
 
