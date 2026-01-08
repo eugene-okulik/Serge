@@ -1,7 +1,7 @@
 import pytest
 from pages.base_page import BasePage
 from pages.locators.product_locators import ProductPageLocators
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 from time import sleep
 
 
@@ -20,7 +20,7 @@ class ProductPage(BasePage):
             try:
                 unavailable_text = self.get_text(ProductPageLocators.PRODUCT_UNAVAILABLE_TEXT)
                 message = f"Product unavailable: {unavailable_text}"
-            except:
+            except PlaywrightTimeoutError:
                 pass
             pytest.skip(message)
 
@@ -40,7 +40,8 @@ class ProductPage(BasePage):
         self.click_first(ProductPageLocators.ADD_TO_CART_BUTTON)
 
     def wait_for_cart_badge_quantity(self, expected_quantity):
-        self.page.locator(ProductPageLocators.CART_QUANTITY_BADGE).first.filter(has_text=str(expected_quantity)).wait_for(state="attached")
+        wait = self.page.locator(ProductPageLocators.CART_QUANTITY_BADGE)
+        wait.first.filter(has_text=str(expected_quantity)).wait_for(state="attached")
 
     def click_cart_button(self):
         self.click_first(ProductPageLocators.CART_BUTTON)

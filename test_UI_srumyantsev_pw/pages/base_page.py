@@ -54,5 +54,5 @@ class BasePage:
             element = self.page.locator(locator)
             classes = element.get_attribute("class") or ""
             return "d-none" in classes
-        except:
+        except PlaywrightTimeoutError:
             return False

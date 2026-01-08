@@ -11,10 +11,16 @@ class CategoryPageLocators:
 
     SHOPPING_CART_BUTTON = "//input[@type='hidden'][@value='12']/following-sibling::a[@role='button']"
 
-    PROCEED_TO_CHECKOUT_BUTTON = "//div[@role='dialog' and contains(@class,'show')]//button[.//span[normalize-space()='Proceed to Checkout']]"
+    PROCEED_TO_CHECKOUT_BUTTON = (
+        "//div[@role='dialog' and contains(@class,'show')]//button[.//span[normalize-space()='Proceed to Checkout']]"
+    )
 
     ADDED_PRODUCT_NAME = "h6.d-inline.align-top.h6.fw-bold"
 
-    SORT_DROPDOWN_BUTTON = "//a[@role='button' and contains(@class, 'dropdown-toggle')][.//span[contains(normalize-space(),'Featured')]]"
+    SORT_DROPDOWN_BUTTON = (
+        "//a[@role='button' and contains(@class, 'dropdown-toggle')][.//span[contains(normalize-space(),'Featured')]]"
+    )
 
-    SORT_BY_NAME_OPTION = "//a[@role='menuitem' and contains(@class, 'dropdown-item')][.//span[contains(normalize-space(),'Name (A-Z)')]]"
+    SORT_BY_NAME_OPTION = (
+        "//a[@role='menuitem' and contains(@class, 'dropdown-item')][.//span[contains(normalize-space(),'Name (A-Z)')]]"
+    )
